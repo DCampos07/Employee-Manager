@@ -1,0 +1,35 @@
+{
+  "name": "Employee-Manager",
+  "version": "1.0.0",
+  "description": "A command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.",
+  "main": "app.js",
+  "dependencies": {
+    "cfonts": "^2.8.6",
+    "console-table-printer": "^2.4.26",
+    "console.table": "^0.10.0",
+    "express": "^4.17.1",
+    "inquirer": "^7.3.3",
+    "mysql2": "^2.2.5",
+    "rxjs": "^6.6.3",
+    "util": "^0.12.3",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "jest": "^26.6.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DCampos07/Employee-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DCampos07/Employee-Manager/issues"
+  },
+  "homepage": "https://github.com/DCampos07/Employee-Manager#readme"
+}
