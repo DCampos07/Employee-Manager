@@ -38,11 +38,8 @@ const inquireQ = () => {
             "Delete Departments",
             "View Employees by Manager",
             "Update Employee by Manager",
-            "View Budget by Department",
-            "Add Department",
-            "View Departments",
-            "Delete Departments"
-
+            "View Budget by Departments",
+       
         ],
         name: "userFunction",
     },
@@ -52,11 +49,11 @@ const inquireQ = () => {
         //Begin
         try {
             switch (userFunction) {
-                case "Add Department":
+                case "Add Departments":
                     const { deperment } = await ask.prompt({
                         type: "input",
-                        message: "Please enter the department you wsh to add:",
-                        name: "deperment"
+                        message: "Please enter the department you wish to add:",
+                        name: "departments"
                     });
                     await Db.addDeparment(departments);
                     console.log("Successfully added department!");
@@ -65,7 +62,7 @@ const inquireQ = () => {
                     inquireQ();
 
                     break;
-                case "Add Role":
+                case "Add Roles":
                     const dept1 = await Db.getDepartments();
                     const addRole = await ask.prompt([
                         {
@@ -87,14 +84,14 @@ const inquireQ = () => {
                         {
                             type: "list",
                             message: "Please select the department for this role:",
-                            choices: dept1.map(deperment => ({ value: deperment.id, name: departments.name })),
+                            choices: dept1.map(departments => ({ value: departments.id, name: departments.name })),
                             name: "departments_id"
                         }]);
 
-                    await Db.addRole(addRole);
+                    await Db.addRoles(addRole);
                     console.log("Successfully added role!");
-                    const roleAdded = await Db.getRolesWithDepts();
-                    printTable(roleAdded);
+                    const rolesAdded = await Db.getRolesWithDepts();
+                    printTable(rolesAdded);
                     inquireQ();
 
                     break;
@@ -106,14 +103,14 @@ const inquireQ = () => {
 
                     break;
 
-                case "Add Employee":
-                    const Roles = await Db.getRoles();
-                    const Employees = await Db.getEmplyees();
-                    const employeeChoices = employees.map((employee) => ({
-                        value: employee.id,
-                        name: employee.last_name,
+                case "Add Employees":
+                    const roles1 = await Db.getRoles();
+                    const employees = await Db.getEmployees();
+                    const employeesChoices = employees.map((employees) => ({
+                        value: employees.id,
+                        name: employees.last_name,
                     }));
-                    employeeChoices.push({ value: null, name: "None" });
+                    employeesChoices.push({ value: null, name: "None" });
 
                     const addEmp = await ask.prompt([
                         {
@@ -129,18 +126,18 @@ const inquireQ = () => {
                         {
                             type: "list",
                             message: "Please select employee's role:",
-                            choices: roles.map(role => ({ value: role.id, name: role.title })),
-                            name: "role_id",
+                            choices: roles1.map(roles => ({ value: roles.id, name: roles.title })),
+                            name: "roles_id",
                         },
                         {
                             type: "list",
                             message: "Please select the manager for this employee:",
-                            choices: employeeChoices,
+                            choices: employeesChoices,
                             name: "manager_id"
                         }
                     ]);
 
-                    await Db.addEmployee(addEmp);
+                    await Db.addEmployees(addEmp);
                     console.log("Successfully added employee!");
                     const viewRes = await Db.getEmpsWithRoles();
                     printTable(viewRes);
@@ -162,14 +159,14 @@ const inquireQ = () => {
                         {
                             type: "list",
                             message: "Please select the employee you wish to update:",
-                            choices: emps2.map(employee => ({ value: employee.id, name: employee.last_name })),
+                            choices: emps2.map(employees => ({ value: employees.id, name: employees.last_name })),
                             name: "updateID"
                         },
                         {
                             type: "list",
                             message: "Please enter their new role id:",
-                            choices: roles2.map(role => ({ value: role.id, name: role.title })),
-                            name: "updateRoleID"
+                            choices: roles2.map(roles => ({ value: roles.id, name: roles.title })),
+                            name: "updateRolesID"
 
                         }
                     ])
@@ -188,7 +185,7 @@ const inquireQ = () => {
                         {
                             type: "list",
                             message: "Please select the employee who's manager you'd like to change:",
-                            choices: joinEmps.map(employee => ({ value: employee.id, name: employee.last_name })),
+                            choices: joinEmps.map(employees => ({ value: employees.id, name: employees.last_name })),
                             name: "updateMngr"
                         },
                         {
@@ -215,7 +212,7 @@ const inquireQ = () => {
                         {
                             type: "list",
                             message: "Please select the manager of whom you wish to view their employees:",
-                            choices: viewJoin.map(employee => ({ value: employee.id, name: employee.last_name })),
+                            choices: viewJoin.map(employees => ({ value: employees.id, name: employees.last_name })),
                             name: "viewMngrsEmps"
                         }
                     );
@@ -237,7 +234,7 @@ const inquireQ = () => {
                         choices: dept2.map(departments => ({ value: departments.id, name: departments.name })),
                         name: "deleteDept"
                     });
-                    await Db.deleteDepartment(deleteDept);
+                    await Db.deleteDepartments(deleteDept);
 
                     const viewRemain = await Db.getDepartments();
                     printTable(viewRemain);
@@ -245,18 +242,18 @@ const inquireQ = () => {
 
                     break;
 
-                case "Delete Role":
-                    const role = await Db.getRoles();
-                    const { deleteRole } = await ask.prompt([
+                case "Delete Roles":
+                    const roles = await Db.getRoles();
+                    const { deleteRoles } = await ask.prompt([
                         {
                             type: "list",
                             message: "Please select the role you wish to delete:",
-                            choices: role.map(role => ({ value: role.id, name: role.title })),
-                            name: "deleteRole"
+                            choices: roles.map(roles => ({ value: roles.id, name: roles.title })),
+                            name: "deleteRoles"
                         }
                     ]);
 
-                    await Db.deleteRole(deleteRole);
+                    await Db.deleteRoles(deleteRoles);
                     const viewChange = await connection.query("SELECT * FROM roles");
                     printTable(viewChange);
                     inquireQ();
