@@ -43,4 +43,4 @@ Use this to manage and maintain your company's database.
 
     
 <h2 id= "tests">Tests</h2>
-<Video Link:"https://drive.google.com/file/d/1-Uy0jza8n8Ap5Jt92E1MldxPu2XrImpP/view" alt="gif of working app">
+Video Link: https://drive.google.com/file/d/1-Uy0jza8n8Ap5Jt92E1MldxPu2XrImpP/view
