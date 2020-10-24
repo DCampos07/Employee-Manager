@@ -30,8 +30,8 @@ npm i, run 'npm start',
 Use this to manage and maintain your company's database.
   
 <h2 id= "screenshots">Screenshots</h2>
-<img src="public/assets/images/note-main.png" alt="screenshot of app">
-<img src="public/assets/images/note-note.png" alt="screenshot of app">
+<img src="./assets/screenshot1.png" alt="screenshot of app">
+<img src="/assets/screemshot2.png" alt="screenshot of app">
 
 
 <h2 id= "contact">Contact</h2>
@@ -43,4 +43,4 @@ Use this to manage and maintain your company's database.
 
     
 <h2 id= "tests">Tests</h2>
-<img src="../public/assets/images/NT.mp4" alt="gif of working app">
+<img src="https://drive.google.com/file/d/1-Uy0jza8n8Ap5Jt92E1MldxPu2XrImpP/view" alt="gif of working app">
