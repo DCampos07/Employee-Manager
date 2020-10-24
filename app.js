@@ -33,11 +33,10 @@ const inquireQ = () => {
             "Add Employees",
             "Update Employee Roles",
             "Delete Employees",
-            "View Departments",
             "Add Departments",
             "Delete Departments",
             "View Employees by Manager",
-            "Update Employee by Manager",
+            "Update Employees by Manager",
             "View Budget by Departments",
        
         ],
@@ -50,12 +49,12 @@ const inquireQ = () => {
         try {
             switch (userFunction) {
                 case "Add Departments":
-                    const { deperment } = await ask.prompt({
+                    const { departments } = await ask.prompt({
                         type: "input",
                         message: "Please enter the department you wish to add:",
                         name: "departments"
                     });
-                    await Db.addDeparment(departments);
+                    await Db.addDepartments(departments);
                     console.log("Successfully added department!");
                     const showDpt = await Db.getDepartments();
                     printTable(showDpt);
@@ -178,7 +177,7 @@ const inquireQ = () => {
 
                     break;
 
-                case "Update Employee Managers":
+                case "Update Employees by Manager":
                     const joinEmps = await Db.getEmpsWithRoles();
                     printTable(joinEmps);
                     const updateMngrs = await ask.prompt([
@@ -226,7 +225,7 @@ const inquireQ = () => {
 
                     break;
 
-                case "Delete Department":
+                case "Delete Departments":
                     const dept2 = await Db.getDepartments();
                     const { deleteDept } = await ask.prompt({
                         type: "list",
@@ -257,24 +256,27 @@ const inquireQ = () => {
                     const viewChange = await connection.query("SELECT * FROM roles");
                     printTable(viewChange);
                     inquireQ();
+                   
                     break;
 
-                case "Delete Employee":
+                case "Delete Employees":
                     const empDel = await getEmployees();
-                    const { deleteEmp } = await ask.prompt({
+                    const { deleteEmp } = await ask.prompt([
+                    {
                         type: "list",
                         message: "Please select the employee you wish to delete:",
-                        choices: empDel.map(employee => ({ value: employee.id, name: employee.last_name })),
+                        choices: empDel.map(employees => ({ value: employees.id, name: employees.last_name })),
                         name: "deleteEmp"
-                    });
+                    }
+                    ]);
 
-                    await Db.deleteEmployee(deleteEmp);
+                    await Db.deleteEmployees(deleteEmp);
                     const viewEmpsLeft = await Db.getEmployees();
                     printTable(viewEmpsLeft);
                     inquireQ();
                     break;
 
-                case "View Budget by Department":
+                case "View Budget by Departments":
                     const budgetDept = await Db.getDepartments();
                     const { budget } = await ask.prompt({
                         type: "list",

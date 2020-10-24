@@ -7,15 +7,15 @@ class db {
     getDepartments() {
         return this.connection.query("SELECT * FROM departments");
     }
-    addDepartment(departments) {
+    addDepartments(departments) {
         return this.connection.query(
             "INSERT INTO departments SET ?",
             {
                 name: departments,
             });
     }
-    deleteDepartment(deleteDept) {
-        return this.connection.query("DELETE FROM departments WHERE id=? " [deleteDept]);
+    deleteDepartments(deleteDept) {
+        return this.connection.query("DELETE FROM departments WHERE id=? ", [deleteDept]);
     }
     viewDeptBudget(budget) {
         return this.connection.query("SELECT departments.id, roles.id AS roles_id, roles.salary, employees.last_name FROM departments INNER JOIN roles ON roles.departments_id = departments.id INNER JOIN employees ON employees.roles_id = roles.id WHERE departments.id=?", [budget])
@@ -59,8 +59,7 @@ class db {
         }]);
     }
     updateEmpMngrs(updateEmpMngrs) {
-        return this.connection.query("UPDATE employees SET ? WHERE ?",
-        [{
+        return this.connection.query("UPDATE employees SET ? WHERE ?", [{
             manager_id: updateEmpMngrs.updateMngrID,
         },
         {
@@ -68,7 +67,7 @@ class db {
         }]);
     }
     updateEmpRoles(joinQ) {
-        return this.connection.query("UPDATE employees SET ? WHERE ?" [{
+        return this.connection.query("UPDATE employees SET ? WHERE ?", [{
             roles_id: joinQ.updateRolesID
         },
         {
@@ -76,7 +75,7 @@ class db {
         }]);
     }
     deleteEmployees(deleteEmp) {
-        return this.connection.query("DELETE FROM employees WHERE id=?" [deleteEmp]);
+        return this.connection.query("DELETE FROM employees WHERE id=?", [deleteEmp]);
     }
 }
 
