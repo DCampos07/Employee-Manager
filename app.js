@@ -6,10 +6,8 @@ const ask = require('inquirer');
 const validator = require('validator');
 const cfonts = require('cfonts');
 const { printTable } = require("console-table-printer");
-const util = require('util');
-const { async } = require('rxjs');
 const { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } = require('constants');
-const { type } = require('os');
+const os = require('os');
 const { beginTransaction } = require('./db/connect');
 
 connection.query = util.promisify("connection.query");

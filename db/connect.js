@@ -6,7 +6,7 @@ require('dotenv').config();
 const connection = mysql.createConnection({
     host: "localhost",
 
-    // Your port; if not 3306
+    // Your port
     port: 3306,
 
     // Your username
@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
 
     // Your password
     password: `${process.env.PASSWORD}`,
-    database: "employee_trackerDB"
+    database: "employee_managerDB"
 });
 
 module.exports = connection;
