@@ -31,7 +31,7 @@ Use this to manage and maintain your company's database.
   
 <h2 id= "screenshots">Screenshots</h2>
 <img src="./assets/screenshot1.png" alt="screenshot of app">
-<img src="/assets/screemshot2.png" alt="screenshot of app">
+<img src="./assets/screemshot2.png" alt="screenshot of app">
 
 
 <h2 id= "contact">Contact</h2>
