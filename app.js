@@ -3,6 +3,7 @@ const Db = require('./db/database');
 const connection = require('./db/connect');
 //Importing Files
 const ask = require('inquirer');
+const util = require('util');
 const validator = require('validator');
 const cfonts = require('cfonts');
 const { printTable } = require("console-table-printer");
@@ -308,7 +309,7 @@ const inquireQ = () => {
 };
 
 
-cfonts.say("Track Your Employee's!", {
+cfonts.say("Employee Manager!", {
     font: "pallet",
     align: "left",
     colors: ["yellow", "magenta"],

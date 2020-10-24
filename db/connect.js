@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
     user: "root",
 
     // Your password
-    password: `${process.env.PASSWORD}`,
+    password: 'DCampos00MS@',
     database: "employee_managerDB"
 });
 
