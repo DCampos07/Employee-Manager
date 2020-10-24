@@ -16,9 +16,9 @@ VALUES
 ("Sales-Lead", 80000, 2),
 ("Store-Manager", 100000, 2),
 ("Staffing-Coordinator", 50000, 3),
-("HR-Manager," 200000, 3),
-("Accountant," 80000, 4),
-("Account-Manager," 100000, 4);
+("HR-Manager", 200000, 3),
+("Accountant", 80000, 4),
+("Account-Manager", 100000, 4);
 
 
 

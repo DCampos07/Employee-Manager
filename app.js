@@ -10,7 +10,7 @@ const { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } = require('constants');
 const os = require('os');
 const { beginTransaction } = require('./db/connect');
 
-connection.query = util.promisify("connection.query");
+connection.query = util.promisify(connection.query);
 
 //Connection
 connection.connect(function (err) {
@@ -57,7 +57,7 @@ const inquireQ = () => {
                         message: "Please enter the department you wsh to add:",
                         name: "deperment"
                     });
-                    await Db.addDeparment(department);
+                    await Db.addDeparment(departments);
                     console.log("Successfully added department!");
                     const showDpt = await Db.getDepartments();
                     printTable(showDpt);
@@ -86,8 +86,8 @@ const inquireQ = () => {
                         {
                             type: "list",
                             message: "Please select the department for this role:",
-                            choices: dept1.map(deperment => ({ value: deperment.id, name: department.name })),
-                            name: "department_id"
+                            choices: dept1.map(deperment => ({ value: deperment.id, name: departments.name })),
+                            name: "departments_id"
                         }]);
 
                     await Db.addRole(addRole);
@@ -233,7 +233,7 @@ const inquireQ = () => {
                     const { deleteDept } = await ask.prompt({
                         type: "list",
                         message: "Please select the department you wish to delete:",
-                        choices: dept2.map(department => ({ value: department.id, name: department.name })),
+                        choices: dept2.map(departments => ({ value: departments.id, name: departments.name })),
                         name: "deleteDept"
                     });
                     await Db.deleteDepartment(deleteDept);
@@ -281,7 +281,7 @@ const inquireQ = () => {
                     const { budget } = await ask.prompt({
                         type: "list",
                         message: "Please select the department's budget you wish to view",
-                        choices: budgetDept.map(department => ({ value: department.id, name: department.name })),
+                        choices: budgetDept.map(departments => ({ value: departments.id, name: departments.name })),
                         name: "budget"
                     });
                     const budgetView = await Db.viewDeptBudget(budget);
