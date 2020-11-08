@@ -21,10 +21,10 @@ DCampos07
 This is a project built on Node using MySql and Inquirer. It is a simple app to manage a company's employee database.
 
 <h2 id= "installation">Installation</h2>
-npm i, run 'npm start',
+`npm i, run npm start`
     
 <h2 id= "technology">Technology Stack</h2>
- Node.Js, MySql, Inquirer, JavaScript, GIT, GitHub.
+ `Node.Js, MySql, Inquirer, JavaScript, GIT, GitHub`
   
 <h2 id= "usage">Usage</h2>
 Use this to manage and maintain your company's database.
